@@ -1,8 +1,8 @@
 class CreatePatients < ActiveRecord::Migration[8.0]
   def change
     create_table :patients do |t|
-      t.string :name
-      t.string :api_key
+      t.string :name, null: false
+      t.string :api_key, null: false
 
       t.timestamps
     end

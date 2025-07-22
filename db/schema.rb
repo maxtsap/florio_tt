@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema[8.0].define(version: 2025_07_22_143143) do
   create_table "drugs", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_drugs_on_name", unique: true
@@ -30,8 +30,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_22_143143) do
   end
 
   create_table "patients", force: :cascade do |t|
-    t.string "name"
-    t.string "api_key"
+    t.string "name", null: false
+    t.string "api_key", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["api_key"], name: "index_patients_on_api_key", unique: true
