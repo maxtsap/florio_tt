@@ -33,3 +33,9 @@ Style/FrozenStringLiteralComment:
 
 Style/Documentation:
   Enabled: false
+
+StringLiterals:
+  Enabled: false
+
+Style/BlockComments:
+    Enabled: false
