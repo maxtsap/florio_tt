@@ -4,6 +4,8 @@ class Patient < ApplicationRecord
 
   before_validation :generate_api_key, on: :create
 
+  has_many :injections, dependent: :destroy
+
   private
 
   def generate_api_key

@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Patient, type: :model do
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_uniqueness_of(:api_key) }
+  it { is_expected.to have_many(:injections).dependent(:destroy) }
 
   describe 'callbacks' do
     it 'generates an API key before creating a patient' do

@@ -10,12 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_22_141916) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_22_143143) do
   create_table "drugs", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_drugs_on_name", unique: true
+  end
+
+  create_table "injections", force: :cascade do |t|
+    t.integer "dose", null: false
+    t.string "lot_number", limit: 6, null: false
+    t.integer "patient_id", null: false
+    t.integer "drug_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["drug_id"], name: "index_injections_on_drug_id"
+    t.index ["patient_id"], name: "index_injections_on_patient_id"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -25,4 +36,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_22_141916) do
     t.datetime "updated_at", null: false
     t.index ["api_key"], name: "index_patients_on_api_key", unique: true
   end
+
+  add_foreign_key "injections", "drugs"
+  add_foreign_key "injections", "patients"
 end
