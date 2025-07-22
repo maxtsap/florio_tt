@@ -36,7 +36,12 @@ module FlorioTt
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    # Don't generate system test files.
-    config.generators.system_tests = nil
+    config.generators do |g|
+      g.system_tests nil
+      g.jbuilder false
+      g.template_engine nil
+      g.helper false
+      g.assets false
+    end
   end
 end
