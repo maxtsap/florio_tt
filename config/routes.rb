@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :drugs, only: [:index]
       namespace :client do
         resources :injections, only: [:index, :create]
+        resource :adherence_score, only: [:show]
       end
     end
   end
