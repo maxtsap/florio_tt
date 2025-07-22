@@ -4,6 +4,30 @@ RSpec.describe "Api::V1::Client::Injections", type: :request do
   let(:patient) { create(:patient) }
   let(:json_response) { JSON.parse(response.body) }
 
+  describe "GET /api/v1/client/injections" do
+    let!(:injection) { create(:injection, dose: 10, lot_number: "ABC123", patient: patient, drug: drug) }
+    let(:drug) { create(:drug) }
+
+    context "with valid parameters" do
+      let(:headers) do
+        {
+          "ACCEPT" => "application/json",
+          "Authorization" => patient.api_key
+        }
+      end
+
+      it "creates a new Injection and returns json" do
+        get '/api/v1/client/injections', headers: headers
+        expect(response).to have_http_status(:ok)
+        expect(json_response[0]).to include(
+          "dose" => 10,
+          "drug_id" => drug.id,
+          "lot_number" => "ABC123"
+        )
+      end
+    end
+  end
+
   describe "POST /api/v1/client/injections" do
     let(:drug) { create(:drug) }
     let(:valid_attributes) do

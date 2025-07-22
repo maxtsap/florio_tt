@@ -2,6 +2,10 @@ module Api
   module V1
     module Client
       class InjectionsController < Api::V1::Client::BaseController
+        def index
+          render json: current_patient.injections.to_json, status: :ok
+        end
+
         def create
           injection = current_patient.injections.new(injection_params)
 

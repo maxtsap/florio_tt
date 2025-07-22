@@ -4,7 +4,7 @@ Rails.application.routes.draw do
       resources :patients, only: [:create]
       resources :drugs, only: [:index]
       namespace :client do
-        resources :injections, only: [:create]
+        resources :injections, only: [:index, :create]
       end
     end
   end
