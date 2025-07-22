@@ -23,35 +23,8 @@ RSpec.describe "Api::V1::Client::AdherenceScores", type: :request do
     end
   end
 
-  describe "unauthenticated request" do
-    context "when API key is missing" do
-      let(:headers) do
-        {
-          "ACCEPT" => "application/json",
-          "Authorization" => ""
-        }
-      end
-
-      it "returns unauthorized status" do
-        get '/api/v1/client/adherence_score', headers: headers
-        expect(response).to have_http_status(:unauthorized)
-        expect(json_response["error"]).to eq("API key is missing")
-      end
-    end
-
-    context "when API key is invalid" do
-      let(:headers) do
-        {
-          "ACCEPT" => "application/json",
-          "Authorization" => "invalid_api_key"
-        }
-      end
-
-      it "returns unauthorized status" do
-        get '/api/v1/client/adherence_score', headers: headers
-        expect(response).to have_http_status(:unauthorized)
-        expect(json_response["error"]).to eq("Invalid API key")
-      end
-    end
+  it_behaves_like 'authenticated request' do
+    let(:verb) { :get }
+    let(:path) { '/api/v1/client/adherence_score' }
   end
 end

@@ -26,6 +26,12 @@ RSpec.describe "Api::V1::Client::Injections", type: :request do
         )
       end
     end
+
+    it_behaves_like 'authenticated request' do
+      let(:params) { valid_attributes }
+      let(:verb) { :get }
+      let(:path) { '/api/v1/client/injections' }
+    end
   end
 
   describe "POST /api/v1/client/injections" do
@@ -88,36 +94,10 @@ RSpec.describe "Api::V1::Client::Injections", type: :request do
       end
     end
 
-    describe "unauthenticated request" do
-      context "when API key is missing" do
-        let(:headers) do
-          {
-            "ACCEPT" => "application/json",
-            "Authorization" => ""
-          }
-        end
-
-        it "returns unauthorized status" do
-          post '/api/v1/client/injections', params: valid_attributes, headers: headers
-          expect(response).to have_http_status(:unauthorized)
-          expect(json_response["error"]).to eq("API key is missing")
-        end
-      end
-
-      context "when API key is invalid" do
-        let(:headers) do
-          {
-            "ACCEPT" => "application/json",
-            "Authorization" => "invalid_api_key"
-          }
-        end
-
-        it "returns unauthorized status" do
-          post '/api/v1/client/injections', params: valid_attributes, headers: headers
-          expect(response).to have_http_status(:unauthorized)
-          expect(json_response["error"]).to eq("Invalid API key")
-        end
-      end
+    it_behaves_like 'authenticated request' do
+      let(:params) { valid_attributes }
+      let(:verb) { :post }
+      let(:path) { '/api/v1/client/injections' }
     end
   end
 end
