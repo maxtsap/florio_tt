@@ -112,3 +112,15 @@ This project is configured with **GitHub Actions** to automatically run:
 - ✅ RuboCop lint checks
 
 This ensures that all pull requests and commits maintain code quality and pass validation before being merged.
+
+## 🛠 Admin Interface
+
+This project uses ActiveAdmin to provide a fully-featured administrative interface.
+
+✅ Why ActiveAdmin?
+-	It’s a mature, widely used admin framework for Rails
+-	Provides CRUD interfaces with minimal configuration
+-	Easily extendable for custom dashboards, filters, and authorization
+-	Saves development time when building admin areas without reinventing the wheel
+
+ActiveAdmin is well-suited for internal tools or admin-only interfaces, making it a great choice for this project’s needs.
