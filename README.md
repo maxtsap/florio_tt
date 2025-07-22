@@ -90,3 +90,25 @@ http://localhost:3000
 
 - This Docker setup is optimized for **production builds**. For full-featured development experience, consider using DevContainers or overriding the Compose file.
 - The `config/master.key` is included in the repository **only for test purposes**. **Do not commit this key in production projects.**
+
+
+## 🧭 Project Overview
+
+This application uses a **REST API** architecture. The reason for choosing REST is:
+
+- It’s a well-established, widely supported standard
+- It allows for stateless, scalable and easily testable APIs
+- It fits the nature of the application which involves predictable CRUD-like operations
+
+REST makes it easy to integrate with various frontend clients or external services without requiring complex protocol layers.
+
+---
+
+### ✅ CI/CD Integration
+
+This project is configured with **GitHub Actions** to automatically run:
+
+- ✅ RSpec tests
+- ✅ RuboCop lint checks
+
+This ensures that all pull requests and commits maintain code quality and pass validation before being merged.
