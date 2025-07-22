@@ -8,7 +8,7 @@
 /.bundle
 
 # Ignore all environment files.
-/.env*
+#/.env* For the purpose of this test task, .env is added to git
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -31,4 +31,4 @@
 /public/assets
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
+#/config/master.key - For the purpose of this test task, master key is added to git.
