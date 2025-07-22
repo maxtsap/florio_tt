@@ -27,3 +27,9 @@ Metrics/MethodLength:
 
 Metrics/AbcSize:
   Max: 20
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
