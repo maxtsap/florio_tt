@@ -7,4 +7,12 @@ class Injection < ApplicationRecord
 
   belongs_to :patient
   belongs_to :drug
+
+  def self.ransackable_attributes(_ = nil)
+    %w[created_at dose drug_id id lot_number patient_id updated_at]
+  end
+
+  def self.ransackable_associations(_ = nil)
+    %w[drug patient]
+  end
 end

@@ -6,6 +6,14 @@ class Patient < ApplicationRecord
 
   has_many :injections, dependent: :destroy
 
+  def self.ransackable_attributes(_ = nil)
+    %w[created_at id name updated_at]
+  end
+
+  def self.ransackable_associations(_ = nil)
+    ["injections"]
+  end
+
   private
 
   def generate_api_key
